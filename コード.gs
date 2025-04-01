@@ -1,5 +1,8 @@
 function postNote() {
-  const x = newTwitterV2();
+  const x = newTwitterV2((url) => {
+    const line = newLine(PropertiesService.getScriptProperties().getProperty("LINE_TOKEN"));
+    line.postMessage(url, PropertiesService.getScriptProperties().getProperty("LINE_ID_1"));
+  });
   const articles = Note.getArticles(PropertiesService.getScriptProperties().getProperty("NOTE_ID"));
   const article = randChoice(articles);
   x.postMessage(`${article.title}

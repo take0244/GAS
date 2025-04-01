@@ -42,13 +42,13 @@ const doFetch = (options, debug=false) => {
   * @returns {HTTPResponse} - HTTPレスポンスオブジェクト
   * @throws  {Error} - エラーが発生した場合は、エラーメッセージを投げます。
   */
-const jsonFetch = (options) => JSON.parse(doFetch({
+const jsonFetch = (options, debug) => JSON.parse(doFetch({
   ...options,
   headers: {
     ...options.headers,
     'Content-Type': 'application/json',
   },
-}).getContentText());
+}, debug).getContentText());
 
 
 /** 

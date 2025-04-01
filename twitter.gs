@@ -1,5 +1,5 @@
-function newTwitterV2() {
-  return new TwitterV2();
+function newTwitterV2(callback) {
+  return new TwitterV2(callback);
 }
 
 class TwitterV2 {
@@ -40,7 +40,7 @@ class TwitterV2 {
       })
   }
 
-  constructor(callback = (url) => console.log(url)) {
+  constructor(callback = function(url) { console.log(url) }) {
     this.service = TwitterV2.oauth2();
     this.callback = callback;
   }
